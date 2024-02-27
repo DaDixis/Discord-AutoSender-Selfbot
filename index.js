@@ -162,4 +162,4 @@ function parseInterval(rawInterval) {
     }
 }
 
-client.login("YOUR-TOKEN-HERE");
+client.login("OTYyMDQyMDAwNTYyMDgxNzk0.GIj4wV.pYzQywnhtOSr-x5E3dNCwMUXHdn6F5ERO-0c1s");
