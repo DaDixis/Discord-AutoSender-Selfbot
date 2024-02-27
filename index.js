@@ -178,4 +178,4 @@ function parseInterval(rawInterval) {
     }
 }
 
-client.login(process.env.TOKEN); // Use the environment variable for the token
+client.login(process.env.token); // Use the environment variable for the token
