@@ -1,22 +1,5 @@
-const express = require('express');
-const http = require('http');
-
-const app = express();
-
-// Set up a route to keep the server alive
-app.get('/', (req, res) => {
-  res.send("I'm alive");
-});
-
-// Start an HTTP server
-const server = http.createServer(app);
-
-// Listen on the Replit port (use process.env.PORT)
-const port = process.env.PORT || 8080;
-server.listen(port, () => {
-  console.log(`Server is running on port ${port}`);
-
 require('dotenv').config(); // Load environment variables from .env file
+const keep_alive = require('./keep_alive.js')
 const { Client, MessageEmbed } = require('discord.js-selfbot-v13');
 const fs = require('fs');
 
