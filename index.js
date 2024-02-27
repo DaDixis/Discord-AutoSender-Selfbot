@@ -16,6 +16,7 @@ const port = process.env.PORT || 8080;
 server.listen(port, () => {
   console.log(`Server is running on port ${port}`);
 
+require('dotenv').config(); // Load environment variables from .env file
 const { Client, MessageEmbed } = require('discord.js-selfbot-v13');
 const fs = require('fs');
 
@@ -157,27 +158,24 @@ client.on('messageCreate', async (message) => {
 
 function parseInterval(rawInterval) {
     const regex = /^(\d+)([smhd])$/;
-    const match = rawInterval.match(regex);
-
-    if (!match) {
-        throw new Error('Invalid interval format. Use digits followed by "s", "m", "h", or "d".');
-    }
+    const match = regex.exec(rawInterval);
+    if (!match) return 0;
 
     const value = parseInt(match[1]);
     const unit = match[2];
 
     switch (unit) {
         case 's':
-            return value * 1000; // seconds to milliseconds
+            return value * 1000;
         case 'm':
-            return value * 60 * 1000; // minutes to milliseconds
+            return value * 60 * 1000;
         case 'h':
-            return value * 60 * 60 * 1000; // hours to milliseconds
+            return value * 60 * 60 * 1000;
         case 'd':
-            return value * 24 * 60 * 60 * 1000; // days to milliseconds
+            return value * 24 * 60 * 60 * 1000;
         default:
-            throw new Error('Invalid interval unit. Use "s", "m", "h", or "d".');
+            return 0;
     }
 }
 
-client.login("OTYyMDQyMDAwNTYyMDgxNzk0.GIj4wV.pYzQywnhtOSr-x5E3dNCwMUXHdn6F5ERO-0c1s");
+client.login(process.env.TOKEN); // Use the environment variable for the token
